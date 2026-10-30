@@ -51,10 +51,5 @@ SysmonEvent
 /mitre/navigator_layer.json - MITRE Navigator Layer
 /.github/workflows/kql-lint.yml - PRD CI/CD
 
-**ايه اللي اتغير؟**
-1.  حطيت Badges فوق تخليه يبان PRD
-2.  كل Rule بقى متقسم: ازاي ههاجم كـ OSCP، ازاي هعمل Bypass، وبعدين الـ Detection
-3.  زودت FP Reduction وده اهم كلمة بيبص عليها اي SOC Manager
-4.  بقي جاهز تشيل 14 Rule بنفس الشكل
-
-اعمل Paste ده واعمل Commit. عايزني اعملك كمان ملف الـ `kql-lint.yml` عشان الـ Badge الاخضر يشتغل بجد؟
+*Focused on Offensive-informed Defense*
+> **Disclaimer:** This repository is for educational and defensive purposes only (Blue Team / SOC Lab).
