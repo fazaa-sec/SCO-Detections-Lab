@@ -1,7 +1,10 @@
-// Rule: Detect Encoded PowerShell - T1059.001
-// MITRE: Execution - Command and Scripting Interpreter: PowerShell
-// Severity: High
 SecurityEvent
-| where EventID == 4688 and Process has_any ("powershell.exe", "pwsh.exe")
-| where CommandLine has "-enc" or CommandLine has "-EncodedCommand"
-| project TimeGenerated, Computer, Account, CommandLine, ParentProcessName
+| where EventID == 4720
+| where TargetUserName !contains "HealthMailbox"
+| where TargetUserName !contains "SM_"
+| where SubjectUserName !in~ ("SYSTEM", "MSOL_", "Sync_", "AAD_")
+| where TargetUserName !endswith "$"
+| where SubjectUserName != "SYSTEM"
+| extend AccountCreator = SubjectUserName, NewAccount = TargetUserName
+| project TimeGenerated, AccountCreator, NewAccount, Computer
+| extend MITRE_Technique = "T1078", Severity = "High"
