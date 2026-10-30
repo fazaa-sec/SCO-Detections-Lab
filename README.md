@@ -1,21 +1,19 @@
-# 🛡️ SCO-Detections-Lab | PRD - Built with Offensive Mindset
+# 🛡️ SOC Detections Lab - PRD Detections Built with Offensive Mindset
 
-[KQL Validation](https://img.shields.io/badge/KQL-Passing-brightgreen)
-[MITRE ATT&CK](https://img.shields.io/badge/MITRE-ATT%26CK-red)
-[Status](https://img.shields.io/badge/Status-PRD-blue)
-[SOC Level](https://img.shields.io/badge/SOC-L2-orange)
+![KQL](https://img.shields.io/badge/KQL-Passing-brightgreen)
+![MITRE](https://img.shields.io/badge/MITRE-ATT%26CK-red)
+![PRD](https://img.shields.io/badge/Status-PRD-blue)
+![SOC](https://img.shields.io/badge/Level-SOC_L2-orange)
 
-> I don't just write KQL queries. I simulate attacks like an OSCP, then build production detections that can't be easily bypassed.
+> Junior SOC writes queries. L2 SOC builds detections that survive evasion. This repo is built with OSCP attack-first mindset.
 
-### 📊 Detection Coverage
-| ID | MITRE | Scenario | File | Status |
-| :--- | :--- | :--- | :--- | :--- |
-| D-01 | T1078 - Valid Accounts | Rogue Admin | detections/T1078_ValidAccounts/detection.kql | ✅ PRD |
+### 🎯 Philosophy
+**Attack → Artifact → Filter.** I simulate the attack as an attacker, find the unavoidable Windows Event, then filter 99% of False Positives.
 
-### 📁 Structure
-/detections/T1078_ValidAccounts/
-  ├── detection.kql
-  ├── attack_simulation.md
-  └── bypass_notes.md
+### 📊 Detections
 
-### Author: SOC Analyst | OSCP Aspirant
+| ID | MITRE ATT&CK | Scenario | KQL | Evasion Fix | Status |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **D-01** | **T1078 - Valid Accounts** | Rogue Admin Persistence | [detection.kql](detections/T1078_ValidAccounts/detection.kql) | Filters HealthMailbox, SYSTEM, $ | **✅ PRD** |
+
+### 📁 Structure (L2 Standard)
