@@ -38,10 +38,29 @@ SecurityEvent
 | where TargetUserName !endswith "$"
 # 1. Simulate the attack
 Invoke-AtomicTest T1078 -TestNumbers 1
+### 🔬 Example: T1078 Detection Logic
 
-# 2. Wait 2-5 mins for log ingestion
-# 3. Check Microsoft Sentinel > Incidents
+**Junior Rule (Noisy):**
+```kql
+SecurityEvent | where EventID == 4720 // 100+ false positives / day
+```
+
+**My PRD Rule (Filtered):**
+```kql
+SecurityEvent
+| where EventID == 4720
+| where TargetUserName !contains "HealthMailbox"
+| where SubjectUserName !in~ ("SYSTEM", "MSOL_", "Sync_")
+| where TargetUserName !endswith "$"
+```
+
+### 🚀 How to Validate in Your Lab
+```powershell
+# 1. Simulate the attack
+Invoke-AtomicTest T1078 -TestNumbers 1
+# 2. Check Sentinel > Incidents
 # Expected: [High] Possible Rogue Admin Created
-Paste it in your README and your repo will look like a real company's detection repo.
+```
 
-Done? Send me a screenshot of the repo and I'll give you the final check.
+### 👨‍💻 Author
+**SOC Analyst | OSCP Aspirant | Seeking SOC L2 Role**
